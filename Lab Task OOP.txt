@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+
+class account
+{
+	public:
+		int balance;
+		account (int y);
+};
+
+account::account(int y)
+{
+	balance=y;
+}
+
+class atm
+{
+	public:
+		int variable;
+		void withdraw(account &x);
+		void transfer(account &x, account y, int z);
+		void bill(account &x, int y);
+		void quary(account &x);
+};
+
+void atm::withdraw(account &x)
+{
+	cout<<"\nPlease enter the amount you want to withdraw: \t";
+	cin>>variable;
+	while(variable>>x.balance)
+	{
+		cout<<"\nNow your present balance is "<<x.balance<<".\nEnter amount equal to or less than it.\t";
+		cin>>variable;
+	}
+	x.balance=x.balance-variable;
+	}
+
+
+void atm::transfer(account &x, account y, int z)
+{
+	x.balance=x.balance-z;
+	y.balance=y.balance+z;
+	
+}
+	
+void atm::bill(account &x, int y)
+{
+	x.balance=x.balance-y;
+}
+
+void atm::quary(account &x)
+{
+	
+	cout<<"\nYour balance is ::\t";
+	cout<<x.balance;
+}
+	
+int main(void)
+{
+	int choice,input;
+	int present=10000;
+	cout<<"Enter what do you want to do:\n\t\tEnter 1 for withdraw\n\t\tEnter 2 for transfer fund\n\t\tEnter 3 for pay bills\n\t\tEnter 4 for query.\t";
+	cin>>choice;
+    
+    account x(present);
+    account y(1000);
+    atm obj;
+    if(choice==1)
+	{
+		 cout<<"\nYour present balance is :"<< present;
+		 obj.withdraw(x);
+		 obj.quary(x);
+		 
+	}
+	if (choice ==2)
+	{
+		cout<<"\nEnter the amount do you want to transfer::   ";
+		cin>>input;
+		obj.transfer(x,y,input);
+		obj.quary(x);
+	}
+	
+	if (choice ==3)
+	{
+		cout<<"\nEnter the amount of bill::   ";
+		cin>>input;
+		obj.bill(x,input);
+		obj.quary(x);
+	}
+	
+	if(choice==4)
+	{
+		obj.quary(x);
+	}
+    
+}	
