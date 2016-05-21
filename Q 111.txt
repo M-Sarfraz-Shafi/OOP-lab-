@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class band_group
+{
+	
+	protected:
+		int count;
+		virtual void getcount(void)=0;
+};
+
+
+
+
+class symphony:band_group
+{
+	private:
+		string conductor;
+		
+	public:
+		string getconductor();
+		void setconductor(string conductor);
+};
+
+void symphony::getcount(void)
+{
+	
+}
+
+string symphony::getconductor()
+{
+	return this->conductor;
+}
+
+
+void symphony::setconductor(string conductor)
+{
+	this->conductor=conductor;
+}
+
+
+class metal:band_group
+{
+	private:
+		int technitions;
+	public:
+		void gettechnitions();
+		void settechnitions(int technitions);
+};
+
+
+int main(void)
+{
+	symphony a;
+	
+}
